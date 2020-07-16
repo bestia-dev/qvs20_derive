@@ -1,0 +1,27 @@
+[package]
+name = "qvs20_derive"
+version = "0.0.1"
+authors = ["Luciano Bestia <luciano.bestia@gmail.com>"]
+edition = "2018"
+description = "Derive crate for qvs20 - Modern replacement for csv for the year 2020."
+repository = "https://github.com/LucianoBestia/qvs20_derive"
+readme = "README.md"
+license = "MIT"
+keywords = ["rust"]
+categories = []
+# publish as a cargo tool. Only this files.
+publish = false
+include = [
+    "Cargo.toml",
+    "LICENSE",
+    "README.md",
+    "src/*",
+]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = "1.0"
+quote = "1.0"
+proc-macro2 = "1.0.18"
