@@ -1,13 +1,14 @@
 // example_01.rs
 // is used by test_01 to cargo expand
 // then is compared to saved expand_01.txt
+// it is NOT a runnable example
 
-use qvs20_derive::{Qvs20Row,Qvs20Table};
+use qvs20_derive::{Qvs20Row, Qvs20Table};
 
 // clear; cargo expand --example example_01
 
 #[derive(Qvs20Table)]
-pub struct CouDenTable (Vec<CouDenRow>);
+pub struct CouDenTable(Vec<CouDenRow>);
 
 #[derive(Qvs20Row)]
 #[Qvs20TableName = "cou_den5"]
@@ -17,6 +18,4 @@ pub struct CouDenRow {
     pub density: String,
 }
 
-fn main(){
-
-}
+fn main() {}
