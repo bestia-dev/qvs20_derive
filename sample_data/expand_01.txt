@@ -1,0 +1,192 @@
+#![feature(prelude_import)]
+#[prelude_import]
+use std::prelude::v1::*;
+#[macro_use]
+extern crate std;
+use qvs20_derive::{Qvs20Row, Qvs20Table};
+pub struct CouDenTable(Vec<CouDenRow>);
+impl CouDenTable {
+    /// constructor
+    pub fn new() -> CouDenTable {
+        CouDenTable(::alloc::vec::Vec::new())
+    }
+    pub fn table_name() -> &'static str {
+        CouDenRow::table_name()
+    }
+    /// write schema
+    pub fn write_schema(&self, file_name: &str) {
+        let text = {
+            let mut wrt = WriterForQvs20::new();
+            self.write_schema_to_writer(&mut wrt, true);
+            wrt.return_and_finish()
+        };
+        fs::write(file_name, &text).unwrap();
+        {
+            ::std::io::_print(::core::fmt::Arguments::new_v1(
+                &["write ", "_schema.qvs20:\n"],
+                &match (&Self::table_name(),) {
+                    (arg0,) => [::core::fmt::ArgumentV1::new(
+                        arg0,
+                        ::core::fmt::Display::fmt,
+                    )],
+                },
+            ));
+        };
+        {
+            ::std::io::_print(::core::fmt::Arguments::new_v1(
+                &["", "\n"],
+                &match (&text,) {
+                    (arg0,) => [::core::fmt::ArgumentV1::new(
+                        arg0,
+                        ::core::fmt::Display::fmt,
+                    )],
+                },
+            ));
+        };
+    }
+    pub fn write_schema_to_writer(&self, wrt: &mut WriterForQvs20, schema_only: bool) {
+        let schema = CouDenRow::get_schema();
+        schema.write_schema_to_writer(wrt, schema_only);
+    }
+    /// write rows
+    pub fn write_table_rows(&self, file_name: &str) {
+        let text = {
+            let mut wrt = WriterForQvs20::new();
+            wrt.write_string("R");
+            wrt.write_string(&Self::table_name());
+            wrt.write_delimiter();
+            self.write_table_rows_to_writer(&mut wrt);
+            wrt.return_and_finish()
+        };
+        fs::write(file_name, &text).unwrap();
+        {
+            ::std::io::_print(::core::fmt::Arguments::new_v1(
+                &["write ", "_rows.qvs20:\n"],
+                &match (&Self::table_name(),) {
+                    (arg0,) => [::core::fmt::ArgumentV1::new(
+                        arg0,
+                        ::core::fmt::Display::fmt,
+                    )],
+                },
+            ));
+        };
+        {
+            ::std::io::_print(::core::fmt::Arguments::new_v1(
+                &["", "\n"],
+                &match (&text,) {
+                    (arg0,) => [::core::fmt::ArgumentV1::new(
+                        arg0,
+                        ::core::fmt::Display::fmt,
+                    )],
+                },
+            ));
+        };
+    }
+    fn write_table_rows_to_writer(&self, wrt: &mut WriterForQvs20) {
+        for row in self.0.iter() {
+            row.write_row_to_writer(wrt);
+        }
+    }
+    /// write one file for table
+    pub fn write_one_file(&self, file_name: &str) {
+        let text = {
+            let mut wrt = WriterForQvs20::new();
+            self.write_schema_to_writer(&mut wrt, false);
+            self.write_table_rows_to_writer(&mut wrt);
+            wrt.return_and_finish()
+        };
+        fs::write(file_name, &text).unwrap();
+        {
+            ::std::io::_print(::core::fmt::Arguments::new_v1(
+                &["write ", ".qvs20:\n"],
+                &match (&Self::table_name(),) {
+                    (arg0,) => [::core::fmt::ArgumentV1::new(
+                        arg0,
+                        ::core::fmt::Display::fmt,
+                    )],
+                },
+            ));
+        };
+        {
+            ::std::io::_print(::core::fmt::Arguments::new_v1(
+                &["", "\n"],
+                &match (&text,) {
+                    (arg0,) => [::core::fmt::ArgumentV1::new(
+                        arg0,
+                        ::core::fmt::Display::fmt,
+                    )],
+                },
+            ));
+        };
+    }
+    pub fn read_from_file(&mut self, file_name: &str) {
+        let text = fs::read_to_string(file_name).unwrap();
+        let mut rdr = ReaderForQvs20::new(text.as_bytes());
+        let mut vec_of_string = rdr.next_row_as_vec_of_string().unwrap();
+        let file_type = std::mem::replace(&mut vec_of_string[0], String::new());
+        let table_name = std::mem::replace(&mut vec_of_string[1], String::new());
+        if table_name != Self::table_name() {
+            {
+                ::std::rt::begin_panic("wrong table name")
+            };
+        }
+        if file_type == "R" {
+        } else if file_type == "T" || file_type == "S" {
+            let _description = std::mem::replace(&mut vec_of_string[1], String::new());
+            drop(vec_of_string);
+            let _vec_of_data_types = rdr.next_row_as_vec_of_string().unwrap();
+            let _vec_of_sub_table_schemas = rdr.next_row_as_vec_of_string().unwrap();
+            let _vec_of_additional_properties = rdr.next_row_as_vec_of_string().unwrap();
+            let _vec_of_column_names = rdr.next_row_as_vec_of_string().unwrap();
+        } else {
+            {
+                ::std::rt::begin_panic("first row is not correct")
+            };
+        }
+        CouDenRow::read_row_from_reader(&mut rdr, &mut self.0);
+    }
+    pub fn read_schema_from_file(&mut self, file_name: &str) -> TableSchema {
+        let text = fs::read_to_string(file_name).unwrap();
+        let schema = TableSchema::schema_from_qvs20_str(&text).unwrap();
+        schema
+    }
+}
+#[Qvs20TableName = "cou_den5"]
+#[Qvs20Description = "example with country population density"]
+pub struct CouDenRow {
+    pub country: String,
+    pub density: String,
+}
+impl CouDenRow {
+    pub fn table_name() -> &'static str {
+        "cou_den5"
+    }
+    pub fn write_row_to_writer(&self, wrt: &mut WriterForQvs20) {
+        wrt.write_string(&self.country);
+        wrt.write_string(&self.density);
+        wrt.write_delimiter();
+    }
+    pub fn read_row_from_reader(rdr: &mut ReaderForQvs20, rows: &mut Vec<CouDenRow>) {
+        while !rdr.peek_next_is_eof() {
+            let country = rdr.next_string().unwrap();
+            let density = rdr.next_string().unwrap();
+            rdr.next_row_delimiter().unwrap();
+            rows.push(CouDenRow { country, density });
+        }
+    }
+    pub fn get_schema() -> TableSchema {
+        let schema = TableSchema {
+            table_name: "cou_den5".to_string(),
+            table_description: "example with country population density".to_string(),
+            data_types: <[_]>::into_vec(box [DataType::String, DataType::String]),
+            sub_table_schemas: <[_]>::into_vec(box [None, None]),
+            additional_properties: <[_]>::into_vec(box [String::new(), String::new()]),
+            column_names: <[_]>::into_vec(box ["country".to_string(), "density".to_string()]),
+            row_delimiter: b'\n',
+            sub_table_row_delimiter: b'1',
+            ..Default::default()
+        };
+        schema
+    }
+}
+fn main() {}

@@ -106,8 +106,8 @@ fn build_output(
                 let mut vec_of_string = rdr.next_row_as_vec_of_string().unwrap();
                 // move out of vector. Warning: can be used only once!
                 // The next time it will be the wrong value without any error.
-                let file_type = std::mem::replace(&mut vec_of_string[0], s!());
-                let table_name = std::mem::replace(&mut vec_of_string[1], s!());
+                let file_type = std::mem::replace(&mut vec_of_string[0], String::new());
+                let table_name = std::mem::replace(&mut vec_of_string[1], String::new());
                 if table_name != Self::table_name() {
                     panic!("wrong table name");
                 }
@@ -118,7 +118,7 @@ fn build_output(
                     // schema with 5 rows
                     // move out of vector. Warning: can be used only once!
                     // The next time it will be the wrong value without any error.
-                    let _description = std::mem::replace(&mut vec_of_string[1], s!());
+                    let _description = std::mem::replace(&mut vec_of_string[1], String::new());
                     // drop the vector because it has not the originals values anymore
                     drop(vec_of_string);
                     let _vec_of_data_types = rdr.next_row_as_vec_of_string().unwrap();
