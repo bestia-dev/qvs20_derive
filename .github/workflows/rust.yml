@@ -21,6 +21,7 @@ jobs:
         with:
           crate: cargo-expand
           version: latest
+          use-tool-cache: true
       - name: expand
         run: cargo expand --example example_01
       - name: test
