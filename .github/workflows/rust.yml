@@ -15,11 +15,13 @@ jobs:
       - name: fmt
         run: cargo fmt -- --check
       - name: build
-        run: cargo build --verbose
+        run: cargo build
       - name: install
         uses: actions-rs/install@v0.1
         with:
           crate: cargo-expand
           version: latest
+      - name: expand
+        run: cargo expand --example example_01
       - name: test
-        run: cargo test expand_compare
+        run: cargo test test_01_expand_compare
