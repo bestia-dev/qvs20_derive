@@ -3,7 +3,7 @@ use std::process::Command;
 
 /// run cargo expand, compare with saved file
 #[test]
-fn tast_01_expand_compare() {
+fn test_01_expand_compare() {
     // cargo expand --example example_01
     let args = vec!["expand", "--example", "example_01"];
     let output = Command::new("cargo").args(args).output().unwrap();
