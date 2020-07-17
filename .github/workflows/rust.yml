@@ -1,4 +1,4 @@
-name: Rust
+name: Rust fmt build test
 on:
   push:
     branches: [ master ]
@@ -24,4 +24,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: tests
-      run: cargo test --verbose
+      working-directory: tests
+      run: cargo test expand_compare
