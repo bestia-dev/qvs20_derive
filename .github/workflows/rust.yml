@@ -24,4 +24,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: tests
-      run: cargo test --verbose
+      run: cargo test expand_compare
