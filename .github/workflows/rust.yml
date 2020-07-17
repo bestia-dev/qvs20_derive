@@ -7,13 +7,9 @@ on:
 env:
   CARGO_TERM_COLOR: always
 jobs:
-  build:
+  fmt:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: fmt
       run: cargo fmt -- --check
-    - name: build
-      run: cargo build --verbose
-    - name: tests
-      run: cargo test --verbose
