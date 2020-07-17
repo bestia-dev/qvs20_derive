@@ -7,25 +7,19 @@ on:
 env:
   CARGO_TERM_COLOR: always
 jobs:
-  fmt:
-    name: fmt
+  all:
+    name: all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cargo fmt -- --check
-  build:
-    name: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: cargo build --verbose
-  test:
-    name: tests
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions-rs/install@v0.1
-    - with:
+      - name: fmt
+        run: cargo fmt -- --check
+      - name: build
+        run: cargo build --verbose
+      - name: install
+        uses: actions-rs/install@v0.1
+        with:
           crate: cargo-expand
           version: latest
-    - run: cargo test expand_compare
+      - name: test
+        run: cargo test expand_compare
