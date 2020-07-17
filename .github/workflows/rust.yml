@@ -7,6 +7,12 @@ on:
 env:
   CARGO_TERM_COLOR: always
 jobs:
+  install:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2
+      - name: install
+        run: cargo install cargo-expand
   fmt:
     runs-on: ubuntu-latest
     steps:
@@ -24,5 +30,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: tests
-      working-directory: tests
       run: cargo test expand_compare
