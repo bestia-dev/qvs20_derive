@@ -2,8 +2,6 @@
 
 # QVS20 - derive
 
-A modern replacement for csv for the year 2020.  
-
 [comment]: # (lmake_cargo_toml_to_md start)
 
 **Derive crate for qvs20 - Modern replacement for csv for the year 2020**  
