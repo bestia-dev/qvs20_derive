@@ -15,8 +15,6 @@ A modern replacement for csv for the year 2020.
 
 [comment]: # (lmake_lines_of_code end)
   
-My proposed format for import/export of 2 dimensional database tables.  
-  
 ## Derive
 
 Procedural macro to codegen (code generate) the implementation for serialize/deserialize qvs20.  
