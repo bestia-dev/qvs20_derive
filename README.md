@@ -7,7 +7,7 @@ A modern replacement for csv for the year 2020.
 [comment]: # (lmake_cargo_toml_to_md start)
 
 **Derive crate for qvs20 - Modern replacement for csv for the year 2020**  
-***version: 1.0  date: 2020-07-13 author: [dev_Bestia](https://bestia.dev) repository: [GitHub](https://github.com/LucianoBestia/qvs20_derive)***  
+***version: 1.0  date: 2020-07-13 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/qvs20_derive)***  
 
 [comment]: # (lmake_cargo_toml_to_md end)
 

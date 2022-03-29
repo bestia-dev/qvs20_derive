@@ -1,10 +1,10 @@
 [package]
 name = "qvs20_derive"
 version = "0.0.1"
-authors = ["Luciano Bestia <luciano.bestia@gmail.com>"]
+authors = ["bestia.dev <info@bestia.dev>"]
 edition = "2018"
 description = "Derive crate for qvs20 - Modern replacement for csv for the year 2020."
-repository = "https://github.com/LucianoBestia/qvs20_derive"
+repository = "https://github.com/bestia-dev/qvs20_derive"
 readme = "README.md"
 license = "MIT"
 keywords = ["rust"]
