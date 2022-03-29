@@ -2,8 +2,6 @@
 
 # QVS20 - derive
 
-A modern replacement for csv for the year 2020.  
-
 [comment]: # (lmake_cargo_toml_to_md start)
 
 **Derive crate for qvs20 - Modern replacement for csv for the year 2020**  
@@ -14,8 +12,6 @@ A modern replacement for csv for the year 2020.
 [comment]: # (lmake_lines_of_code start)
 
 [comment]: # (lmake_lines_of_code end)
-  
-My proposed format for import/export of 2 dimensional database tables.  
   
 ## Derive
 
