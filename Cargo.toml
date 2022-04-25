@@ -2,6 +2,7 @@
 name = "qvs20_derive"
 version = "0.0.1"
 authors = ["bestia.dev"]
+homepage = "https://bestia.dev"
 edition = "2018"
 description = "Derive crate for qvs20 - Modern replacement for csv for the year 2020."
 repository = "https://github.com/bestia-dev/qvs20_derive"
