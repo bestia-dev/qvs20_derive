@@ -12,7 +12,9 @@
 [comment]: # (lmake_lines_of_code start)
 
 [comment]: # (lmake_lines_of_code end)
-  
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbestia-dev%2Fqvs20_derive&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 ## Derive
 
 Procedural macro to codegen (code generate) the implementation for serialize/deserialize qvs20.  
