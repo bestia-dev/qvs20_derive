@@ -13,7 +13,7 @@
 
 [comment]: # (lmake_lines_of_code end)
 
-![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/142200973)
+![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/142200973.svg)
 
 Hashtags: #rustlang #tutorial
 My projects on Github are more like a tutorial than a finished product: [bestia-dev tutorials](https://github.com/bestia-dev/tutorials_rust_wasm).
