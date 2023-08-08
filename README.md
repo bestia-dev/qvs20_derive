@@ -9,6 +9,9 @@
 
 [comment]: # (lmake_cargo_toml_to_md end)
 
+![status](https://img.shields.io/badge/obsolete-red) 
+![status](https://img.shields.io/badge/archived-red) 
+
 [comment]: # (lmake_lines_of_code start)
 
 [comment]: # (lmake_lines_of_code end)
